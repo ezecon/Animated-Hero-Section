@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Hero Section</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&family=Matemasie&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2.2.18/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .HeaderAnim {
+            animation: headeranm 3s ease-in-out;
+        }
+        @keyframes headeranm {
+            from {
+                opacity: 0;
+                transform: translateX(-200px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .imgtran {
+            animation: imgtrans 3s ease;
+        }
+        @keyframes imgtrans {
+            from {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .imgtranrev {
+            animation: imgtransrev 3s ease;
+        }
+        @keyframes imgtransrev {
+            from {
+                opacity: 0;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(400px);
+            }
+        }
+        .img1{
+            padding-top: 50px;
+            width: 370px;
+            height: 430px;
+            object-fit: cover;
+        }
+        .img{
+            animation: imgx 1s ease-in-out infinite;
+        }
+        @keyframes imgx {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <nav class="flex justify-between px-4 py-5 navbar">
+            <p class="font-bold text-2xl px-4 cursor-pointer text-white matemasie">Mr. X</p>
+            <div class="flex gap-10 text-white edu text-xl px-10">
+                <p>Project</p>
+                <p>Contact</p>
+                <p>About</p>
+            </div>
+        </nav>
+        <div class="grid grid-cols-2">
+            <div class=" flex flex-col justify-center items-center ">
+                <h1 id="headerH" class=" text-4xl font-bold edu text-white">BOYCOTT COCACOLA</h1>
+                <p id="headerP" class="text-lg font-bold edu text-white">"Take a stand—boycott and let your choices speak for your values.</p>
+            </div>
+            <div>
+                <div class="h-[100vh] flex flex-col justify-center items-center" >
+                     <div id="imgId" class="w-1/5 flex justify-center items-center"> <img id="mainImg" class="img img1 w-1/2" src="img/pngegg.png" alt=""></div>
+                      <p id="sym" class="cursor-pointer mt-40 text-white text-2xl border float-right mr-2 p-4 rounded-lg hover:bg-white" onclick="selectImg()">Check Elements</p>
+                      <div id="littleImg" class="float-right w-2/3 hidden mt-36 list grid grid-cols-8 gap-2 p-2 border border-white rounded">
+                         <img src="img/pngegg (1).png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngegg.png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngegg (2).png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngegg (3).png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngwing.com.png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngegg (5).png" alt=""onclick="updatePhoto(this)">
+                         <img src="img/pngegg (4).png" alt=""onclick="updatePhoto(this)">
+                         <p id="sym" class="cursor-pointer text-white text-4xl pt-2" onclick="selectImg()">></p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        window.onload = function() {
+            header();
+        };
+
+        function header() {
+            var hh = document.getElementById('headerH');
+            var pp = document.getElementById('headerP');
+            pp.style.opacity = '0';
+            hh.classList.add('HeaderAnim');
+            setTimeout(() => {
+                pp.classList.add('HeaderAnim');
+                pp.style.opacity = '1';
+            }, 2000);
+        }
+
+        function selectImg() {
+            var sym = document.getElementById('sym');
+            var list = document.getElementById('littleImg');
+            list.classList.toggle('hidden');
+            sym.classList.toggle('hidden');
+            if (!list.classList.contains('hidden')) {
+                list.classList.add('imgtran');
+            }
+        }
+        function updatePhoto(element){
+            var image = document.getElementById('mainImg');
+            var image1 = document.getElementById('imgId');
+            
+            image.classList.remove('img')
+            image1.classList.add('imgtranrev')
+            image1.classList.remove('imgtran')
+
+            setTimeout(()=>{
+                image.src=element.src;
+                image1.classList.add('imgtran')
+                image1.classList.remove('imgtranrev')
+                
+            },3000)//3second delay
+
+            setTimeout(()=>{
+                image.classList.add('img')
+            },5000)
+
+        
+        }
+    </script>
+</body>
+</html>

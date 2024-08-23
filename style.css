@@ -1,0 +1,40 @@
+body{
+    background: url(bg.jpg);
+    object-fit: cover;
+}
+.navbar{
+    background-color: rgba(212, 212, 212, 0.11);
+}
+
+.check{
+  background: #e4e4e46e;
+}
+.check:hover{
+ background: none;
+}
+
+.edu{
+  font-family: "Edu VIC WA NT Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.matemasie {
+    font-family: "Matemasie", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .list{
+    background: rgba(189, 189, 189, 0.212);
+  }
+  .list img{
+    width: 70%; 
+    height: 75px;
+    border: 1px  white solid;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(216, 216, 216, 0.26);
+  }
